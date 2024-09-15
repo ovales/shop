@@ -1,0 +1,35 @@
+{% load static %}
+<link href="{% static 'style.css' %}" rel="stylesheet"/>
+
+<div class="heading">
+    <div class="logo">
+        <h1 class="logoText">ValoMarket</h1>
+    </div>
+
+    <div class="navigation">
+        <a class="navlink" href="/">Главная</a>
+        <a class="navlink" href="/products">Товары</a>
+        <a class="navlink" href="/discounts">Услуги</a>
+    </div>
+</div>
+
+
+<div class="productList">
+
+    {% for product in products %}
+    <div class="product">
+        <img class="productPreview" src="{{ product.image_url }}">
+        <div>
+            <a href="/product/{{ product.id }}">
+                <h2>{{ product.name }}</h2>
+            </a>
+            <p>{{ product.description }}</p>
+        </div>
+        <div class="priceSection">
+            <h3>{{ product.price }} ₽</h3>
+            <button>Купить</button>
+        </div>
+    </div>
+    {% endfor %}
+
+</div>
